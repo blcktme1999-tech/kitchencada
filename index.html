@@ -1,0 +1,990 @@
+<!DOCTYPE html><html lang="zh-Hant"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>餐飲快配站｜各地區餐飲職缺・代班・臨時人力媒合</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&amp;family=Cormorant+Garamond:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6efe6;
+      --paper: #fffaf4;
+      --ink: #1f1611;
+      --muted: #6f6057;
+      --line: rgba(31, 22, 17, 0.1);
+      --brand: #bf4f2f;
+      --brand-deep: #8f351b;
+      --accent: #f0c36b;
+      --accent-soft: #f6dcc0;
+      --card: rgba(255, 250, 244, 0.82);
+      --shadow: 0 24px 60px rgba(54, 30, 17, 0.14);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+      --hero-copy-photo: url('https://postimg.cc/JtbY8V0M');
+      --hero-panel-photo: url('https://postimg.cc/Y458cbwt');
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(240, 195, 107, 0.38), transparent 28%),
+        radial-gradient(circle at 100% 20%, rgba(191, 79, 47, 0.18), transparent 24%),
+        linear-gradient(180deg, #f7f0e7 0%, #f3e8dd 52%, #f8f3ec 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 250, 244, 0.75);
+      border-bottom: 1px solid rgba(31, 22, 17, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      background: linear-gradient(135deg, var(--brand), #df7d33);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(191, 79, 47, 0.24);
+    }
+
+    .brand-copy small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .brand-copy strong {
+      font-size: 18px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav a:hover { color: var(--ink); }
+
+    .line-btn,
+    .line-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .line-btn {
+      background: linear-gradient(135deg, var(--brand), #d76733);
+      color: #fff;
+      padding: 14px 24px;
+      box-shadow: 0 14px 28px rgba(191, 79, 47, 0.22);
+    }
+
+    .line-btn:hover,
+    .line-btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .line-btn-secondary {
+      padding: 13px 22px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(31, 22, 17, 0.08);
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 58px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .section-card,
+    .story-card,
+    .cta-card,
+    .stats-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      border-radius: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 195, 107, 0.34), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(240, 195, 107, 0.22);
+      color: var(--brand-deep);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1,
+    .section-title,
+    .cta-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 9vw, 98px);
+      max-width: 9ch;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--brand);
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-tags span {
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 22, 17, 0.08);
+      color: #5b4a41;
+    }
+
+    .hero-panel {
+      border-radius: 36px;
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 26px;
+      border: 1px dashed rgba(31, 22, 17, 0.08);
+      pointer-events: none;
+    }
+
+    .hero-panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      z-index: 1;
+    }
+
+    .hero-panel-top strong {
+      font-size: 24px;
+      line-height: 1.25;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .hero-panel-top span,
+    .hero-panel small,
+    .footer-copy {
+      color: var(--muted);
+    }
+
+    .mini-badge {
+      min-width: 74px;
+      text-align: center;
+      padding: 12px 10px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff6ea, #f6dfb3);
+      color: var(--brand-deep);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .board {
+      display: grid;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .board-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 15px 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(31, 22, 17, 0.06);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--brand-deep);
+      background: rgba(240, 195, 107, 0.24);
+    }
+
+    .board-row b {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .board-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pulse {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #23c55e;
+      box-shadow: 0 0 0 rgba(35, 197, 94, 0.4);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(35, 197, 94, 0.4); }
+      70% { box-shadow: 0 0 0 14px rgba(35, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(35, 197, 94, 0); }
+    }
+
+    section {
+      padding: 38px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--brand);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 64px);
+      max-width: 10ch;
+    }
+
+    .section-head p,
+    .story-card p,
+    .service-card p,
+    .step p,
+    .faq-item p,
+    .region-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .section-head p {
+      max-width: 450px;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .service-grid,
+    .region-grid,
+    .story-grid,
+    .process-grid,
+    .faq-grid,
+    .stats-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .region-card,
+    .step,
+    .faq-item,
+    .stats-card {
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      background: rgba(255, 250, 244, 0.88);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before,
+    .region-card::before,
+    .step::before,
+    .faq-item::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), rgba(240, 195, 107, 0.9));
+      transform: scaleX(0.32);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before,
+    .region-card:hover::before,
+    .step:hover::before,
+    .faq-item:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #fff2db, #f4cf9e);
+    }
+
+    .service-card h3,
+    .region-card h3,
+    .story-card h3,
+    .step h3,
+    .faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      font-weight: 800;
+      color: var(--brand-deep);
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .stats-card {
+      text-align: center;
+      padding: 24px 18px;
+    }
+
+    .stats-card strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      line-height: 0.95;
+      margin-bottom: 8px;
+      color: var(--brand-deep);
+    }
+
+    .stats-card span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .region-grid,
+    .story-grid,
+    .faq-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .story-card {
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .story-card strong {
+      display: block;
+      font-size: 14px;
+      color: var(--brand);
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .step-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand-deep), var(--brand));
+    }
+
+    .cta-card {
+      border-radius: 38px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(240, 195, 107, 0.28), transparent 30%),
+        linear-gradient(135deg, rgba(255, 250, 244, 0.96), rgba(247, 232, 214, 0.95));
+    }
+
+    .cta-card h2 {
+      font-size: clamp(38px, 6vw, 68px);
+      max-width: 10ch;
+      margin-bottom: 10px;
+    }
+
+    .cta-card p {
+      margin: 0;
+      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+      min-width: 260px;
+    }
+
+    .cta-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 24px 0 48px;
+    }
+
+    .footer-shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding-top: 22px;
+      border-top: 1px solid rgba(31, 22, 17, 0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .floating-line {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 25;
+    }
+
+    .floating-line a {
+      width: 68px;
+      height: 68px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #06c755, #10a947);
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 18px 36px rgba(16, 169, 71, 0.28);
+    }
+
+    .floating-line small {
+      display: block;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .cta-card,
+      .service-grid,
+      .process-grid,
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid { grid-template-columns: 1fr; }
+      .cta-card { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav { display: none; }
+      .topbar-inner { align-items: flex-start; }
+      .topbar .line-btn { display: none; }
+      .hero { padding-top: 28px; }
+      .hero-copy,
+      .hero-panel,
+      .cta-card,
+      .story-card,
+      .service-card,
+      .region-card,
+      .step,
+      .faq-item,
+      .stats-card { padding: 22px; }
+      .section-head,
+      .footer-shell { flex-direction: column; align-items: flex-start; }
+      .service-grid,
+      .region-grid,
+      .story-grid,
+      .process-grid,
+      .faq-grid,
+      .stats-grid,
+      .cta-card { grid-template-columns: 1fr; }
+      .board-row { grid-template-columns: 1fr; }
+      .hero h1 { max-width: 100%; }
+      .floating-line { right: 14px; bottom: 14px; }
+      .floating-line a { width: 62px; height: 62px; border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" style="">間</span>
+        <span class="brand-copy">
+          <small>LINE 一鍵媒合</small>
+          <strong style="">間歇人生</strong>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#services">服務內容</a>
+        <a href="#regions">地區媒合</a>
+        <a href="#process">合作流程</a>
+        <a href="#faq">常見問題</a>
+      </nav>
+      <a class="line-btn" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">立即跳轉 LINE</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy photo-frame reveal is-visible" style="outline: none; --hero-copy-photo: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80');">
+          <div class="eyebrow">全區餐飲職缺媒合・代班支援・臨時項目派工</div>
+          <h1 style="width: 820.333px; background-color: transparent;">不管你是缺人還是缺職,這裡到位。</h1>
+          <p>我們專做各地區餐飲職缺分配，提供內場、外場、正職、兼職、代班與臨時人力媒合，並與許多連鎖餐飲店家配合短期與臨時職缺。店家能更快補上人手，求職者也能更直接接到合適班次，所有合作與應徵統一從 LINE 進入。</p>
+          <div class="hero-actions">
+            <a class="line-btn" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">店家找人 / 人員接案</a>
+            <a class="line-btn-secondary" href="#services">先看服務內容</a>
+          </div>
+          <div class="hero-tags">
+            <span>餐廳內外場</span>
+            <span>宴會活動支援</span>
+            <span>臨時代班安排</span>
+            <span>區域快速分派</span>
+          </div>
+          <div class="photo-note">把 <code>--hero-copy-photo</code> 換成你的照片網址即可。</div>
+        </div>
+
+        <aside class="hero-panel photo-frame reveal is-visible" style="--hero-panel-photo: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80');">
+          <div class="hero-panel-top">
+            <div>
+              <span>即時媒合看板</span>
+              <strong>今天有人缺班，今天就能開始找人。</strong>
+            </div>
+            <div class="mini-badge">全年<br>接單中</div>
+          </div>
+          <div class="board">
+            <div class="board-row">
+              <div class="chip">台北區</div>
+              <div>
+                <b>臨時宴會外場</b>
+                <span>晚班支援・彈性排班・可快速上工</span>
+              </div>
+              <div class="pulse" aria-hidden="true"></div>
+            </div>
+            <div class="board-row">
+              <div class="chip">台中區</div>
+              <div>
+                <b>早午餐內場代班</b>
+                <span>短期救援・熟手優先・即時回覆</span>
+              </div>
+              <div class="pulse" aria-hidden="true"></div>
+            </div>
+            <div class="board-row">
+              <div class="chip">高雄區</div>
+              <div>
+                <b>快閃餐飲活動人員</b>
+                <span>展場供餐・品牌快閃・單日安排</span>
+              </div>
+              <div class="pulse" aria-hidden="true"></div>
+            </div>
+          </div>
+          <small>所有媒合連結統一導向 LINE，方便店家與工作者直接對接需求。</small>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="stats-grid reveal">
+          <div class="stats-card">
+            <strong>3</strong>
+            <span>大服務主軸</span>
+          </div>
+          <div class="stats-card">
+            <strong>24h</strong>
+            <span>快速接洽節奏</span>
+          </div>
+          <div class="stats-card">
+            <strong>LINE</strong>
+            <span>統一窗口溝通</span>
+          </div>
+          <div class="stats-card">
+            <strong>All</strong>
+            <span>各地區皆可洽詢</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">你缺的是人手，我們做的是快速補位。</h2>
+          </div>
+          <p>不論是長期招募、短期代班，還是活動型臨時項目，我們都以地區與時段為核心，讓分配更有效率。</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div>
+              <div class="service-icon">🍽️</div>
+              <h3>餐飲職缺分配</h3>
+              <p>協助各類餐廳、小吃、咖啡、連鎖品牌安排正職、兼職與長期班表人力，依地區與店型快速篩選。</p>
+            </div>
+            <a class="service-link" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">前往 LINE 詢問職缺</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div>
+              <div class="service-icon">🕒</div>
+              <h3>代班媒合</h3>
+              <p>遇到臨時請假、突發空班或尖峰時段缺口，可透過 LINE 直接拋出需求，盡快安排代班人力接手。</p>
+            </div>
+            <a class="service-link" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">立即發送代班需求</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div>
+              <div class="service-icon">⚡</div>
+              <h3>臨時餐飲項目</h3>
+              <p>快閃活動、展演供餐、宴會支援、節慶檔期加派，都能依天數、時段與地區安排臨時餐飲工作人員。</p>
+            </div>
+            <a class="service-link" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">洽詢臨時項目安排</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="regions">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Regions</div>
+            <h2 class="section-title">按地區分派，讓餐飲人力流動更順。</h2>
+          </div>
+          <p>你可以直接透過 LINE 告知所在區域、店型、需求時段與人數，我們將協助對接更合適的人選或工作機會。</p>
+        </div>
+
+        <div class="region-grid">
+          <article class="region-card reveal">
+            <h3>北部媒合</h3>
+            <p>商圈餐廳、百貨美食街、咖啡與連鎖品牌需求密集，適合即時班次、短期支援與多店輪替安排。</p>
+            <a class="service-link" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">提交北部需求</a>
+          </article>
+          <article class="region-card reveal">
+            <h3>中南部媒合</h3>
+            <p>小吃、餐館、宴席、觀光區與活動檔期需求彈性高，適合短工、代班與臨時專案人力支援。</p>
+            <a class="service-link" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">提交中南部需求</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container story-grid">
+        <article class="story-card reveal">
+          <strong>適合店家</strong>
+          <h3>忙碌時段缺人，不必再到處私訊找支援。</h3>
+          <p>把工作內容、地點、時段、人數與需求條件直接傳到 LINE，能更快開始安排媒合，節省反覆溝通的時間。</p>
+        </article>
+        <article class="story-card reveal">
+          <strong>適合求職者</strong>
+          <h3>想找餐飲工作、兼職班、代班機會，都能快速接上。</h3>
+          <p>不論你想接穩定班表還是臨時短班，只要從 LINE 進入，就能更直接掌握媒合方向與可安排的工作機會。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Process</div>
+            <h2 class="section-title">合作流程清楚，從需求到對接更俐落。</h2>
+          </div>
+          <p>我們把流程壓縮得夠簡單：先傳需求，再做分配，再進入對接，讓每一次補位都更有效率。</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="step reveal">
+            <span class="step-no">01</span>
+            <h3>加入 LINE</h3>
+            <p>點擊網站任一按鈕，即可直接進入統一聯絡窗口。</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-no">02</span>
+            <h3>提供需求</h3>
+            <p>告知地區、時段、職務、天數、需求人數或想找的工作型態。</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-no">03</span>
+            <h3>快速媒合</h3>
+            <p>依照條件安排更合適的店家、人員、代班或臨時項目對接。</p>
+          </article>
+          <article class="step reveal">
+            <span class="step-no">04</span>
+            <h3>開始合作</h3>
+            <p>確認細節後，即可進入後續溝通與上工安排。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">FAQ</div>
+            <h2 class="section-title">你可能會先想知道的事。</h2>
+          </div>
+          <p>如果你想更快開始，最直接的方式還是點進 LINE，把需求或想接的工作先丟過來。</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item reveal">
+            <h3>店家怎麼發需求？</h3>
+            <p>直接點網站所有按鈕進入 LINE，告知地區、班別、日期、職務與人數即可開始洽詢。</p>
+          </article>
+          <article class="faq-item reveal">
+            <h3>求職者可以找哪些類型？</h3>
+            <p>可洽詢正職、兼職、代班、短期支援、活動型餐飲工作與其他臨時安排機會。</p>
+          </article>
+          <article class="faq-item reveal">
+            <h3>服務區域有限制嗎？</h3>
+            <p>以各地區餐飲職缺與人力分派為主，北中南皆可透過 LINE 先提交需求，再進一步對接。</p>
+          </article>
+          <article class="faq-item reveal">
+            <h3>聯繫方式是什麼？</h3>
+            <p>本站所有導流統一使用同一個 LINE 連結，方便集中處理與快速回覆。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-card reveal">
+          <div>
+            <div class="section-kicker">LINE CTA</div>
+            <h2>現在就把需求，直接丟進 LINE。</h2>
+            <p>不管你是店家要找餐飲人力，還是工作者要接職缺、代班或臨時項目，點一下就能開始。所有連結皆統一導向同一個 LINE 入口。</p>
+          </div>
+          <div class="cta-stack">
+            <a class="line-btn" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">立即跳轉 LINE</a>
+            <a class="line-btn-secondary" href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">查看最新媒合資訊</a>
+            <div class="cta-note">所有按鈕皆導向同一連結</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-shell">
+      <div>
+        <div class="brand-copy">
+          <small>Restaurant Staffing &amp; Shift Matching</small>
+          <strong>餐飲快配站</strong>
+        </div>
+        <p class="footer-copy">分配各地區餐飲職缺、代班與臨時餐飲項目，統一由 LINE 快速對接。</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">LINE 聯繫</a>
+        <a href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">店家合作</a>
+        <a href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer">人才洽詢</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-line">
+    <a href="https://lihi.cc/6R84s" target="_blank" rel="noreferrer" aria-label="前往 LINE">LINE</a>
+    <small>立即洽詢</small>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+  </script>
+
+
+</body></html>
